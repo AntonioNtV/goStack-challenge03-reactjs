@@ -7,7 +7,13 @@ function App() {
   const [repositories, setRepositories] = useState([])
 
   async function handleAddRepository() {
-    // TODO
+    const response = await api.post('/repositories', {
+      "title": "analytics_adapter",
+      "url": "github.com/elife/analytics_adapter",
+      "techs": ["java"]
+    })
+
+    setRepositories([...repositories, response.data])
   }
 
   async function handleRemoveRepository(id) {
